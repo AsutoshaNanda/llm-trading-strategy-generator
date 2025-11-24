@@ -1,6 +1,6 @@
 <div align="center">
 
-# llm-trading-strategy-generator
+# LLM Trading Strategy Generator
 
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/downloads/)
 [![OpenAI](https://img.shields.io/badge/OpenAI-GPT--5-green.svg)](https://platform.openai.com/)
@@ -12,116 +12,97 @@
 [![Gradio](https://img.shields.io/badge/Gradio-Interface-orange.svg)](https://gradio.app/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-</div>
 
-<div align="center">
-<h2>📋 Table of Contents</h2>
-<table>
-  <tr>
-    <td><a href="#features">✨ Features</a></td>
-    <td><a href="#supported-models">🤖 Supported Models</a></td>
-    <td><a href="#requirements">📦 Requirements</a></td>
-    <td><a href="#installation">🔧 Installation</a></td>
-  </tr>
-  <tr>
-    <td><a href="#configuration">⚙️ Configuration</a></td>
-    <td><a href="#usage">🎮 Usage</a></td>
-    <td><a href="#architecture">🏗️ Architecture</a></td>
-    <td><a href="#examples">💡 Examples</a></td>
-  </tr>
-  <tr>
-    <td><a href="#trading-functions">📊 Trading Functions</a></td>
-    <td><a href="#data-sources">📡 Data Sources</a></td>
-    <td><a href="#troubleshooting">🐛 Troubleshooting</a></td>
-    <td><a href="#license">📄 License</a></td>
-  </tr>
-</table>
+**An AI-powered tool that generates algorithmic trading strategies using multiple frontier and open-source language models**
+
+[Features](#-features) • [Installation](#-installation) • [Usage](#-usage) • [Models](#-supported-models) • [Documentation](#-architecture)
+
 </div>
 
 ---
 
 ## ✨ Features
 
-### 🤖 **Multi-Model Support**
+### 🤖 Multi-Model AI Integration
+- **Frontier Models**: GPT-4o, Claude Sonnet 4.5, Gemini 2.5 Pro
+- **Open-Source Models**: CodeQwen 1.5 7B, CodeGemma 7B
+- **Real-time Streaming**: Progressive code generation with live output
+- **Model Comparison**: Test strategies across different AI architectures
 
-#### Frontier AI Models
-- **OpenAI GPT-5** - Fast code generation for trading strategies
-- **Anthropic Claude Sonnet 4** - Superior strategy logic and optimization
-- **Google Gemini 2.5 Pro** - Advanced algorithmic understanding and generation
-
-#### Open-Source Models (HuggingFace)
-- **CodeQwen 1.5 7B** - Specialized for algorithmic code understanding
-- **CodeGemma 7B** - Lightweight inference for strategy generation
-
-### 🎯 **Algorithmic Trading Strategy Generation**
-- Automatic generation of unique trading strategies
-- Support for multiple strategy types:
-  - Momentum / trend-following
+### 📊 Trading Strategy Generation
+- Generates 5 unique trading functions from a single example
+- Supports multiple strategy types:
+  - Momentum and trend-following
   - Mean reversion
   - Moving average crossovers
   - RSI-based strategies
-  - Volatility and risk-managed strategies
+  - Volatility breakout strategies
   - Random/Monte Carlo approaches
-- Strategy comparison and backtesting
+- Realistic threshold conditions that trigger frequently on real market data
+- Fallback mechanisms to ensure consistent signal generation
 
-### 📊 **Market Data Integration**
-- Real OHLCV (Open, High, Low, Close, Volume) data from:
-  - Yahoo Finance via `yfinance` library (no API key required)
-  - Stooq via direct CSV URLs (no API key required)
-- Historical price data fetching and parsing
-- Support for multiple stock tickers
+### 💹 Market Data Integration
+- **Free Data Sources**: Yahoo Finance via `yfinance` (no API key required)
+- **Historical OHLCV Data**: Open, High, Low, Close, Volume
+- **46 Ticker Support**: Includes tech stocks, crypto-related stocks, and traditional companies
+- **Data Validation**: Automatic handling of delisted/missing tickers
 
+### 🎮 Interactive Gradio Interface
+- **Code Generation**: Generate 5 trading strategies from example function
+- **Strategy Viewer**: View individual strategy code with syntax highlighting
+- **Trade Execution**: Run strategies and see actual trade results
+- **Model Selection**: Easy dropdown to switch between AI models
+- **Results Display**: Formatted output showing tickers, quantities, and actions
 
-### 🖥️ **Interactive Web UI**
-- Beautiful Gradio interface with code input/output
-- Model selection dropdown for easy switching
-- Real-time strategy generation and streaming
-- Clean, user-friendly design
-
-### 🔀 **Streaming Response**
-- Real-time streaming for all AI models
-- Progressive code generation display
-- Fast feedback during strategy generation
+### 🔧 Advanced Features
+- **Trade Splitting**: Automatically parse generated code into individual functions
+- **Execution Engine**: Run strategies with real market data
+- **Error Handling**: Robust retry mechanisms for strategy execution
+- **Code Sanitization**: Automatic fixing of common Pandas DataFrame errors
+- **Multiple Ticker Sets**: Standard (17 tickers) and extended (43 tickers) for different strategies
 
 ---
 
 ## 🤖 Supported Models
 
-### Frontier AI Models (Cloud-Based)
+### Frontier AI Models
 
-| Model | Provider | Speed | Quality | Context |
-|-------|----------|-------|---------|---------|
-| GPT-5 | OpenAI | ⚡⚡⚡ | ⭐⭐⭐⭐ | 128K |
-| Claude Sonnet 4 | Anthropic | ⚡⚡ | ⭐⭐⭐⭐⭐ | 200K |
-| Gemini 2.5 Pro | Google | ⚡⚡ | ⭐⭐⭐⭐⭐ | 1M |
+| Model | Provider | Version | Speed | Quality | Best For |
+|-------|----------|---------|-------|---------|----------|
+| GPT-4o | OpenAI | gpt-4o | ⚡⚡⚡ | ⭐⭐⭐⭐ | Fast generation with good quality |
+| Claude Sonnet 4.5 | Anthropic | claude-sonnet-4-5-20250929 | ⚡⚡ | ⭐⭐⭐⭐⭐ | Highest quality strategies |
+| Gemini 2.5 Pro | Google | gemini-2.5-pro | ⚡⚡ | ⭐⭐⭐⭐⭐ | Advanced strategy logic |
 
 ### Open-Source Models (HuggingFace)
 
-| Model | Size | Speed | Quality | Best For |
-|-------|------|-------|---------|----------|
-| CodeQwen 1.5 | 7B | ⚡⚡⚡ | ⭐⭐⭐⭐ | Balanced |
-| CodeGemma | 7B | ⚡⚡⚡ | ⭐⭐⭐⭐ | Lightweight inference |
+| Model | Size | Quantization | Speed | Best For |
+|-------|------|--------------|-------|----------|
+| CodeQwen 1.5 | 7B | 4-bit | ⚡⚡⚡ | Algorithmic code generation |
+| CodeGemma | 7B | N/A (Inference API) | ⚡⚡⚡ | Lightweight strategy creation |
 
 ---
 
 ## 📦 Requirements
 
 ### System Requirements
-- **Python 3.8+**
-- **8GB+ RAM** (for data processing and model inference)
+- **Python**: 3.8 or higher
+- **RAM**: 8GB minimum (16GB recommended for open-source models)
+- **GPU**: Optional (for faster CodeQwen inference with MPS/CUDA)
 
-### Python Dependencies
+### Core Dependencies
 ```
 openai>=1.0.0
 anthropic>=0.7.0
 google-generativeai>=0.3.0
-python-dotenv>=0.21.0
 gradio>=4.0.0
-ipython>=8.0.0
-huggingface-hub>=0.16.0
 transformers>=4.30.0
 torch>=2.0.0
 yfinance>=0.2.0
+pandas>=1.5.0
+numpy>=1.23.0
+huggingface-hub>=0.16.0
+python-dotenv>=0.21.0
+bitsandbytes>=0.41.0  # For model quantization
 ```
 
 ---
@@ -130,8 +111,8 @@ yfinance>=0.2.0
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/trading-project.git
-cd trading-project
+git clone https://github.com/yourusername/llm-trading-strategy-generator.git
+cd llm-trading-strategy-generator
 ```
 
 ### 2. Create Virtual Environment
@@ -147,7 +128,7 @@ venv\Scripts\activate  # On Windows
 pip install -r requirements.txt
 ```
 
-### 4. Configure Environment Variables
+### 4. Set Up Environment Variables
 Create a `.env` file in the project root:
 ```env
 # Frontier Models
@@ -155,8 +136,13 @@ OPENAI_API_KEY=your_openai_api_key_here
 ANTHROPIC_API_KEY=your_anthropic_api_key_here
 GOOGLE_API_KEY=your_google_api_key_here
 
-# Open-Source Models (HuggingFace)
+# HuggingFace
 HF_API_KEY=your_huggingface_token_here
+```
+
+### 5. Launch Jupyter Notebook
+```bash
+jupyter notebook "Trading Project.ipynb"
 ```
 
 ---
@@ -167,33 +153,30 @@ HF_API_KEY=your_huggingface_token_here
 
 #### OpenAI API
 1. Visit [OpenAI Platform](https://platform.openai.com/)
-2. Navigate to API keys section
-3. Create new secret key
-4. Add to `.env` file as `OPENAI_API_KEY`
+2. Create API key in account settings
+3. Add to `.env` as `OPENAI_API_KEY`
 
 #### Anthropic API
 1. Visit [Anthropic Console](https://console.anthropic.com/)
 2. Generate API key
-3. Add to `.env` file as `ANTHROPIC_API_KEY`
+3. Add to `.env` as `ANTHROPIC_API_KEY`
 
 #### Google Gemini API
 1. Visit [Google AI Studio](https://ai.google.dev/)
 2. Create API key
-3. Add to `.env` file as `GOOGLE_API_KEY`
+3. Add to `.env` as `GOOGLE_API_KEY`
 
 #### HuggingFace Token
 1. Visit [HuggingFace Settings](https://huggingface.co/settings/tokens)
-2. Create new token (read access)
-3. Add to `.env` file as `HF_API_KEY`
+2. Create token with read access
+3. Add to `.env` as `HF_API_KEY`
 
 ### Model Configuration
+The following models are pre-configured in the notebook:
 ```python
-# Frontier Models
-claude_model = 'claude-sonnet-4-20250514'
-gpt_model = 'gpt-5-2025-08-07'
+claude_model = 'claude-sonnet-4-5-20250929'
+gpt_model = 'gpt-4o'
 gemini_model = 'gemini-2.5-pro'
-
-# Open-Source Models
 code_qwen = 'Qwen/CodeQwen1.5-7B-Chat'
 code_gemma = 'google/codegemma-7b-it'
 ```
@@ -202,192 +185,119 @@ code_gemma = 'google/codegemma-7b-it'
 
 ## 🎮 Usage
 
-### Quick Start
+### Launch the Interface
+1. Open `Trading Project.ipynb` in Jupyter
+2. Run all cells to initialize models and data
+3. The Gradio interface will launch automatically at `http://127.0.0.1:7865`
 
-#### 1. Launch Gradio Interface
-```bash
-jupyter notebook Trading\ Project.ipynb
-# Navigate to the final UI cell and run it
-```
+### Using the Web Interface
 
-#### 2. Using the Web UI
-- **Input Example Trading Function**: Paste your example trading function in the textbox (default example provided)
-- **Select Model**: Choose from available models (GPT, Claude, Gemini, Qwen, Gemma)
-- **Generate**: Click "Simulate Trading" button to generate five additional trading functions
-- **View Output**: See generated trading strategies in the output textbox
-- **Analyze**: Review the generated code for unique trading logic and implementation
+#### Step 1: Generate Strategies
+1. **Input Example Function**: The default example is pre-loaded (trade1)
+2. **Select Model**: Choose from GPT, Claude, Gemini, Qwen, or Gemma
+3. **Click "Simulate Trading"**: Watch real-time code generation
+4. **View Output**: See 5 unique trading strategies (trade2 through trade6)
 
-### Model Selection Guide
+#### Step 2: View Individual Strategy
+1. **Select Trade Number**: Use slider (2-6) to choose which strategy
+2. **Click "View Selected Trade Code"**: Display the specific function code
+3. **Review Logic**: Examine strategy implementation and comments
 
-**For Best Quality (Slowest):**
-```
-Claude Sonnet 4 > Gemini 2.5 Pro > GPT-5 
-```
+#### Step 3: Execute Strategy
+1. **Click "Run Trading Strategy"**: Execute the selected strategy
+2. **View Results**: See trade output with tickers, quantities, and actions
+3. **Analyze Performance**: Review which stocks were selected for trading
 
-**For Fastest Speed (Good Quality):**
-```
-CodeQwen > GPT-5 > Gemini 2.5 Pro > Claude Sonnet 4
-```
-
-**For Balanced Performance:**
-```
-GPT-5 or Gemini 2.5 Pro
-```
-
-### Programmatic Usage
-
-#### Generate Trading Functions with Claude
-```python
-from trading_project import stream_claude
-
-example_function = """
-def trade1():
-    avg_prices = {ticker: np.mean(prices[ticker][:5]) for ticker in tickers}
-    best_ticker = max(avg_prices, key=avg_prices.get)
-    return [Trade(best_ticker, 100)]
-"""
-
-for chunk in stream_claude(example_function):
-    print(chunk, end='', flush=True)
-```
-
-#### Generate Trading Functions with GPT
-```python
-from trading_project import stream_gpt
-
-for chunk in stream_gpt(example_function):
-    print(chunk, end='', flush=True)
-```
-
-#### Generate Trading Functions with Gemini
-```python
-from trading_project import stream_gemini
-
-for chunk in stream_gemini(example_function):
-    print(chunk, end='', flush=True)
-```
-
-#### Generate with Open-Source Models
-```python
-from trading_project import stream_qwen, stream_gemma
-
-# CodeQwen
-for chunk in stream_qwen(example_function):
-    print(chunk, end='', flush=True)
-
-# CodeGemma
-for chunk in stream_gemma(example_function):
-    print(chunk, end='', flush=True)
-```
-
----
-
-## 📊 System Prompt & Strategy Requirements
-
-### System Prompt Overview
-The AI system is configured as an advanced code-generation specialist for algorithmic trading systems with the following capabilities:
-
-- Fetching historical market data from free, no-API-key sources
-- Parsing OHLCV price data for analysis
-- Implementing unique trading strategies
-- Simulating trades and tracking PnL, equity curves
-- Generating visualizations (price charts, buy/sell markers, equity curves)
-- Returning Trade objects (ticker, quantity pairs)
-
-### Trading Function Requirements
-
-Each generated trading function must:
-- Implement a **unique and distinct** trading strategy
-- Use only free data sources (Yahoo Finance or Stooq)
-- Include clear code comments explaining strategy logic
-- Return a list of Trade objects
-- Contain only Python code with no explanations
-
-### Supported Strategy Types
-- **Momentum/Trend-Following**: Buy rising assets, sell falling assets
-- **Mean Reversion**: Buy oversold, sell overbought conditions
-- **Moving Average Crossovers**: Use MA crossings as buy/sell signals
-- **RSI-Based Strategies**: Leverage Relative Strength Index indicators
-- **Volatility/Risk-Managed**: Scale position sizes based on volatility
-- **Random/Monte Carlo**: Probabilistic or randomized approaches
-
----
-
-## 📡 Data Sources
-
-### Yahoo Finance
-- **Access**: `import yfinance as yf`
-- **No API Key Required**: Free to use
-- **Data Type**: Historical OHLCV data
-- **Best For**: Backtesting, charting, strategy validation
-- **Usage Example**:
-```python
-import yfinance as yf
-data = yf.download('AAPL', start='2023-01-01', end='2024-01-01')
-```
-
-### Stooq
-- **Access**: Direct CSV URL format
-- **Format**: `https://stooq.com/q/d/l/?s={TICKER}&i=d`
-- **No API Key Required**: Free to use
-- **Data Type**: Daily OHLCV data
-- **Best For**: Historical data retrieval, backtesting
+### Supported Tickers
+The system fetches real-time data for 46 tickers including:
+- **Tech Giants**: AAPL, MSFT, GOOGL, AMZN, META, NFLX
+- **Growth Stocks**: TSLA, NVDA, AMD, UBER, PYPL
+- **Crypto-Related**: COIN, RIOT, MARA
+- **Meme Stocks**: GME, AMC
+- **Enterprise**: IBM, ORCL, CRM, CSCO
+- **Cloud/SaaS**: SNOW, DDOG, MDB, CRWD, ZM, OKTA
+- **And many more...**
 
 ---
 
 ## 🏗️ Architecture
 
-### Component Overview
-
+### System Overview
 ```
-┌──────────────────────────────────────────────────────────┐
-│            Gradio Web Interface (UI Layer)               │
-├──────────────────────────────────────────────────────────┤
-│                                                            │
-│  ┌────────────────────┐      ┌────────────────────┐     │
-│  │  Example Function  │      │ Generated Functions│     │
-│  │     Input          │      │    Output          │     │
-│  └────────────────────┘      └────────────────────┘     │
-├──────────────────────────────────────────────────────────┤
-│        Multi-Model Trading Strategy Generation Layer     │
-├────────────────┬──────────────────┬────────────────────┤
-│                │                  │                    │
-│   Frontier     │  Open-Source     │  System Prompts   │
-│   Models       │  Models          │                   │
-│   ──────       │  ────────        │                   │
-│   • OpenAI     │  • CodeQwen      │  • User Prompt    │
-│   • Anthropic  │  • Gemma         │  • System Msg     │
-│   • Google     │                  │                   │
-│                │                  │                   │
-├────────────────┴──────────────────┴────────────────────┤
-│           Strategy Streaming & Delivery Layer           │
-├──────────────────────────────────────────────────────────┤
-│                                                            │
-│  Real-time Streaming Output & Code Generation           │
-│                                                            │
-├──────────────────────────────────────────────────────────┤
+┌─────────────────────────────────────────────────────────┐
+│               Gradio Web Interface                      │
+│  ┌─────────────┐  ┌──────────────┐  ┌──────────────┐  │
+│  │  Generate   │  │ View Code    │  │ Run Strategy │  │
+│  │  Strategies │  │              │  │              │  │
+│  └─────────────┘  └──────────────┘  └──────────────┘  │
+└─────────────────────────────────────────────────────────┘
+                           │
+                           ▼
+┌─────────────────────────────────────────────────────────┐
+│           Multi-Model Strategy Generator                │
+│                                                           │
+│  ┌──────────┐  ┌──────────┐  ┌──────────┐             │
+│  │   GPT    │  │  Claude  │  │  Gemini  │             │
+│  │   4o     │  │ Sonnet4.5│  │ 2.5 Pro  │             │
+│  └──────────┘  └──────────┘  └──────────┘             │
+│                                                           │
+│  ┌──────────┐  ┌──────────┐                            │
+│  │CodeQwen  │  │CodeGemma │                            │
+│  │ 1.5 7B   │  │   7B     │                            │
+│  └──────────┘  └──────────┘                            │
+└─────────────────────────────────────────────────────────┘
+                           │
+                           ▼
+┌─────────────────────────────────────────────────────────┐
+│         Strategy Execution Engine                       │
+│                                                           │
+│  • Code Splitting & Parsing                             │
+│  • Market Data Fetching (yfinance)                      │
+│  • Trade Simulation                                      │
+│  • Error Handling & Retries                             │
+│  • Results Formatting                                    │
+└─────────────────────────────────────────────────────────┘
+                           │
+                           ▼
+┌─────────────────────────────────────────────────────────┐
+│              Trade Results Display                      │
+│                                                           │
+│  Ticker    Quantity    Action                           │
+│  ──────────────────────────────                         │
+│  AAPL      100         BUY                              │
+│  MSFT      -50         SELL                             │
+│  ...                                                     │
+└─────────────────────────────────────────────────────────┘
 ```
 
-### Key Functions
+### Key Components
 
-| Function | Purpose | Input | Output |
-|----------|---------|-------|--------|
-| `optimize()` | Route to appropriate AI model | Example function, model name | Generator yielding strategy code |
-| `stream_gpt()` | Stream OpenAI GPT response | Example trading function | Streaming Python code chunks |
-| `stream_claude()` | Stream Anthropic Claude response | Example trading function | Streaming Python code chunks |
-| `stream_gemini()` | Stream Google Gemini response | Example trading function | Streaming Python code chunks |
-| `stream_qwen()` | CodeQwen strategy generation | Example trading function | Python strategy code |
-| `stream_gemma()` | Gemma strategy generation | Example trading function | Streaming Python code chunks |
-| `user_prompt_for()` | Build AI user prompt | Example trading function | Formatted prompt with instructions |
-| `messages_for()` | Build message structure | Example trading function | Message array for API |
+#### 1. Strategy Generation
+- **System Prompt**: Detailed instructions for AI models on generating trading strategies
+- **User Prompt**: Example function + requirements for 5 additional strategies
+- **Streaming**: Real-time code generation with progressive display
+
+#### 2. Code Processing
+- **`split_trades()`**: Parse generated code into individual function dictionaries
+- **`sanitize_generated_code()`**: Fix common Pandas DataFrame errors
+- **`display_splitted_trade()`**: Extract and display specific trade function
+
+#### 3. Trade Execution
+- **`execute_trade_nums_claude()`**: Run Claude-generated strategies
+- **`execute_trade_nums_gemini()`**: Run Gemini-generated strategies with validation
+- **`execute_trade_nums_openai()`**: Run GPT-generated strategies with helper functions
+- **Retry Mechanisms**: Up to 10 attempts for strategies that return no trades
+
+#### 4. Data Management
+- **Price Fetching**: Download 60 days of historical data for all tickers
+- **Price Storage**: Global `prices` dictionary with ticker -> price list mapping
+- **Ticker Sets**: Standard (17) and extended (43) ticker lists for different strategies
 
 ---
 
-## 💡 Examples
+## 💡 Example Workflow
 
-### Example 1: Basic Momentum Strategy
-
-#### Example Input Function
+### Input (Trade 1 Example)
 ```python
 import numpy as np
 
@@ -399,153 +309,227 @@ def trade1():
     return [trade]
 ```
 
-#### Generated Strategy (Example Output)
+### Generated Output (Example)
 ```python
-import numpy as np
-
 def trade2():
-    # Mean reversion strategy: Buy stocks with lowest prices
-    # in the last 10 days, expecting price recovery
-    min_prices = {ticker: min(prices[ticker][:10]) for ticker in tickers}
-    worst_ticker = min(min_prices, key=min_prices.get)
-    trade = Trade(worst_ticker, 100)
-    return [trade]
+    # Mean Reversion: Buy stocks that dropped significantly
+    # in last 5 days compared to 20-day average
+    trades = []
+    for ticker in tickers:
+        recent_avg = np.mean(prices[ticker][:5])
+        long_avg = np.mean(prices[ticker][:20])
+        if recent_avg < long_avg * 0.95:  # 5% drop
+            trades.append(Trade(ticker, 100))
+    return trades
 
 def trade3():
-    # Moving average crossover: Use 5-day and 20-day MA
-    # Buy when 5-day MA crosses above 20-day MA
-    ma_signals = []
+    # Volatility Breakout: Buy high volatility stocks
+    # with positive momentum
+    trades = []
     for ticker in tickers:
-        ma5 = np.mean(prices[ticker][:5])
-        ma20 = np.mean(prices[ticker][:20])
-        if ma5 > ma20:
-            ma_signals.append((ticker, ma5 - ma20))
-    
-    if ma_signals:
-        best_ticker = max(ma_signals, key=lambda x: x[1])[0]
-        return [Trade(best_ticker, 100)]
-    return []
+        volatility = np.std(prices[ticker][:10])
+        momentum = prices[ticker][0] - prices[ticker][4]
+        if volatility > 0.015 or momentum > 0:
+            trades.append(Trade(ticker, 50))
+    return trades
 
-def trade4():
-    # Random selection with fixed position size
-    # For comparison and baseline strategy
-    selected = np.random.choice(tickers)
-    return [Trade(selected, 50)]
+# ... trade4(), trade5(), trade6()
+```
 
-def trade5():
-    # Volatility-based: Buy highest volatility stocks
-    volatilities = {}
-    for ticker in tickers:
-        vol = np.std(prices[ticker][:10])
-        volatilities[ticker] = vol
-    
-    most_volatile = max(volatilities, key=volatilities.get)
-    return [Trade(most_volatile, 75)]
+### Execution Results
+```
+Trade 4: 3 trades
 
-def trade6():
-    # Risk-managed strategy: Scale positions by inverse volatility
-    positions = []
-    for ticker in tickers:
-        vol = np.std(prices[ticker][:10])
-        if vol > 0:
-            size = int(100 / (1 + vol))
-            positions.append((ticker, size))
-    
-    if positions:
-        best_ticker = max(positions, key=lambda x: x[1])[0]
-        return [Trade(best_ticker, positions[0][1])]
-    return []
+Ticker     Quantity   Action    
+───────────────────────────────
+AAPL       100        BUY       
+MSFT       100        BUY       
+GOOGL      50         BUY       
 ```
 
 ---
 
-## 📊 Trading Functions
+## 📊 Trading Strategy Patterns
 
-### Function Structure
-All trading functions follow this pattern:
+### Strategy Types Generated
+
+1. **Momentum Trading**
+   - Buy stocks with strong recent price increases
+   - Use 5-day vs 20-day moving averages
+   - Filter by volume and price change thresholds
+
+2. **Mean Reversion**
+   - Buy oversold stocks (RSI < 40)
+   - Sell overbought stocks (RSI > 60)
+   - Target price deviations from moving averages
+
+3. **Volatility Breakout**
+   - Trade stocks with high volatility (> 1.5%)
+   - Combine with momentum filters
+   - Scale position sizes by inverse volatility
+
+4. **Moving Average Crossover**
+   - 5-day MA crossing above 20-day MA (buy signal)
+   - 5-day MA crossing below 20-day MA (sell signal)
+   - Include fallback conditions for near-crossovers
+
+5. **RSI-Based**
+   - Calculate 14-period RSI
+   - Buy when RSI < 40, sell when RSI > 60
+   - Use OR logic for inclusive conditions
+
+6. **Risk-Managed**
+   - Position sizing based on volatility
+   - Maximum position limits per stock
+   - Diversification across multiple tickers
+
+### Critical Design Principles
+
+The system enforces **realistic threshold conditions** to ensure strategies generate trades regularly:
+
+❌ **Bad (Too Strict)**
 ```python
-def trade_n():
-    # Strategy description as comment
-    # Logic implementation
-    # Buy/Sell decision making
-    return [Trade(ticker, quantity), ...]  # Return list of Trade objects
+if volatility > 0.03 and momentum > 0.02:  # Almost never triggers
+    return [Trade(ticker, 100)]
 ```
 
-### Trade Object Format
-- **Trade(ticker, quantity)**: Represents a trading decision
-  - `quantity > 0`: BUY signal (long position)
-  - `quantity < 0`: SELL signal (short position or exit)
-  - `ticker`: Stock symbol as string
+✅ **Good (Realistic)**
+```python
+if momentum > 0.01 or (volatility > 0.015 and price_change > 0):
+    return [Trade(ticker, 100)]
+```
 
-### Generated Function Requirements
-The system generates exactly 5 additional functions:
-- `trade2()` through `trade6()`
-- Each with unique strategy logic
-- Each using real historical price data
-- Each returning list of Trade objects
+---
+
+## 🔍 Trade Object Structure
+
+### Trade Class Definition
+```python
+class Trade:
+    def __init__(self, ticker, quantity):
+        self.ticker = ticker      # Stock symbol (e.g., 'AAPL')
+        self.quantity = quantity  # Positive for BUY, negative for SELL
+```
+
+### Usage Examples
+```python
+# Buy 100 shares of Apple
+Trade('AAPL', 100)
+
+# Sell/short 50 shares of Microsoft
+Trade('MSFT', -50)
+
+# Return multiple trades
+return [
+    Trade('AAPL', 100),
+    Trade('GOOGL', 75),
+    Trade('MSFT', -50)
+]
+```
 
 ---
 
 ## 🐛 Troubleshooting
 
-### Issue: "API Key not found"
-**Solution**: Verify `.env` file exists in project root and contains correct keys
+### Common Issues
+
+#### 1. API Key Errors
+**Error**: `AuthenticationError: Invalid API key`
+
+**Solution**: Verify `.env` file exists and contains valid keys
 ```bash
-cat .env  # Check file contents
+cat .env  # Check file exists
+# Verify each key is on its own line without quotes
 ```
 
-### Issue: "Module not found" errors
-**Solution**: Install all dependencies from requirements.txt
+#### 2. No Trades Generated
+**Error**: `Trade X: 0 trades` or empty results
+
+**Solution**: Strategy conditions are too strict
+- The system automatically retries up to 10 times
+- Try different trade numbers (trade4 or trade6 usually more reliable)
+- Check if market data was successfully downloaded
+
+#### 3. Module Not Found
+**Error**: `ModuleNotFoundError: No module named 'X'`
+
+**Solution**: Install missing dependencies
 ```bash
 pip install -r requirements.txt
+# Or install specific package
+pip install yfinance pandas numpy
 ```
 
-### Issue: "HuggingFace authentication failed"
-**Solution**: Verify HF_API_KEY in .env has correct token with read access
-```bash
-huggingface-cli login  # Interactive login
-```
+#### 4. HuggingFace Login Failed
+**Error**: `Token is invalid`
 
-### Issue: Gradio interface won't launch
-**Solution**: Ensure Gradio is installed and port 7864 is available
-```bash
-pip install gradio
-# Check port availability or specify different port in launch()
-```
-
-### Issue: Memory issues during model inference
-**Solution**: Reduce max_tokens or check available system memory
-```bash
-top -l 1 | grep Memory  # Monitor memory usage on macOS
-```
-
-### Issue: Data fetch fails from Yahoo Finance
-**Solution**: Check internet connection and verify ticker symbols are valid
+**Solution**: Re-authenticate with HuggingFace
 ```python
-import yfinance as yf
-data = yf.download('AAPL', period='1y')  # Verify with simple test
+from huggingface_hub import login
+login(token="your_token_here", add_to_git_credential=True)
 ```
 
-### Issue: Generated code contains syntax errors
-**Solution**: Try different model or provide clearer example function
-- Claude typically produces cleaner code
-- GPT is faster but may have formatting issues
-- Adjust system prompt or user prompt if needed
+#### 5. Memory Issues with CodeQwen
+**Error**: `RuntimeError: CUDA out of memory` or system freezes
+
+**Solution**: Using 4-bit quantization already reduces memory. If issues persist:
+- Close other applications
+- Restart Jupyter kernel
+- Use frontier models (GPT/Claude/Gemini) instead
+
+#### 6. Pandas DataFrame Ambiguity
+**Error**: `ValueError: The truth value of a DataFrame is ambiguous`
+
+**Solution**: Already handled by `sanitize_generated_code()`
+- Automatically adds `.any()` or `.values[0]` where needed
+- If persistent, try regenerating with a different model
+
+#### 7. Delisted Ticker Errors
+**Warning**: `possibly delisted; no price data found`
+
+**Solution**: System automatically handles this
+- SPLK, TWTR, FEYE are known delisted tickers
+- They're automatically excluded from `available_tickers`
+- No action needed - strategies run with remaining valid tickers
 
 ---
 
-## 📁 File Structure
+## 📈 Performance Tips
+
+### For Best Results
+
+1. **Model Selection**
+   - **Claude Sonnet 4.5**: Best quality strategies, most consistent
+   - **GPT-4o**: Fastest generation, good quality
+   - **Gemini 2.5 Pro**: Strong logic, requires validation retries
+   - **CodeQwen/Gemma**: Good for offline use, lower quality
+
+2. **Strategy Execution**
+   - Trade3 uses extended ticker set (43 stocks)
+   - Other trades use standard set (17 stocks)
+   - Check "Available tickers" count in console output
+
+3. **Debugging**
+   - Enable DEBUG output to see execution flow
+   - Check console for ticker availability messages
+   - Verify price data was downloaded successfully
+
+---
+
+## 📁 Project Structure
 
 ```
-trading-project/
-├── Trading Project.ipynb              # Main Jupyter notebook
-├── .env                               # Environment variables (git-ignored) (Locally Use)
-├── requirements.txt                   # Python dependencies
-├── README.md                          # This file
-└── LICENSE                            # MIT License
+llm-trading-strategy-generator/
+│
+├── Trading Project.ipynb         # Main Jupyter notebook with all code
+├── .env                          # API keys (not in repo)
+├── requirements.txt              # Python dependencies
+├── README.md                     # This file
+└── LICENSE                       # MIT License
 ```
 
 ---
+
 
 ## 📄 License
 
@@ -553,11 +537,36 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
+## ⚠️ Disclaimer
+
+**This tool is for educational and research purposes only.**
+
+- Not financial advice
+- No guarantee of profitability
+- Past performance does not indicate future results
+- Always do your own research before trading
+- Use at your own risk
+
+---
+
+## 🎓 Citation
+
+If you use LLM Trading Strategy Generator in research, please cite:
+```bibtex
+@software{LLM Trading Strategy Generator 2025,
+  author = {Asutosha Nanda},
+  title = {LLM Trading Strategy Generator},
+  year = {2025},
+  url = {https://github.com/AsutoshaNanda/llm-trading-strategy-generator}
+}
+```
+
+---
+
 <div align="center">
 
-**[⬆ Back to Top](#-trading-project)**
+**[⬆ Back to Top](#llm-trading-strategy-generator)**
 
-**Multi-Model AI Trading Strategy Generator**  
-Made for algorithmic trading research and strategy development
+Made with 🤖 by AI Trading Research
 
 </div>
